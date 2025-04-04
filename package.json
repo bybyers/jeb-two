@@ -1,6 +1,25 @@
 {
-  "name": "jeb-two",
-  "version": "0.1.0",
+  "name": "jeb-portfolio",
+  "description": "A portfolio for Jacob Byers",
+  "author": "Jacob Byers <hello@jacobbyers.me> (https://jacobbyers.me)",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:byebyers/jeb.git"
+  },
+  "bugs": {
+    "url": "git@github.com:byebyers/jeb/issues"
+  },
+  "license": "ISC",
+  "keywords": [
+    "nextjs",
+    "next",
+    "tailwind",
+    "framer",
+    "motion",
+    "preact"
+  ],
+  "homepage": "https://jacobbyers.me",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -9,16 +28,24 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/vision": "^3.82.0",
+    "framer-motion": "^12.6.3",
+    "next": "15.2.4",
+    "next-sanity": "^9.9.9",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4"
+    "react-smooth-marquee": "^1.0.0",
+    "sanity": "^3.82.0",
+    "styled-components": "^6.1.17",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }
