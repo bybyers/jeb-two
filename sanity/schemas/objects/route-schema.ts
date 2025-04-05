@@ -27,7 +27,10 @@ const route = defineType({
 			name: 'pageRoute',
 			fieldset: 'link',
 			type: 'reference',
-			to: [{ type: 'page' }],
+			to: [
+        { type: 'home' },
+        { type: 'about' },
+      ],
 		}),
 		defineField({
 			title: 'Path',

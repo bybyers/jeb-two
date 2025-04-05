@@ -87,7 +87,6 @@ export default defineType({
     defineField({
 			name: 'sections',
 			type: 'sections',
-      group: 'page',
 			title: 'Page sections',
 			description: 'Add, edit, and reorder sections',
 		}),
