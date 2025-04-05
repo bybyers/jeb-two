@@ -79,7 +79,7 @@ export default defineType({
           ],
           preview: {
             select: {
-              title: 'title',
+              title: 'job',
               name: 'name',
             },
             prepare(selection) {

@@ -16,24 +16,6 @@ const textBlock = defineType({
 			initialValue: true,
 		}),
 		defineField({
-			title: 'Anchor Tag',
-			name: 'anchor',
-			type: 'string',
-		}),
-		defineField({
-			title: 'Content Horizontal Alignment',
-			name: 'contentAlignment',
-			type: 'string',
-			initialValue: 'left',
-			options: {
-				list: [
-					{ title: 'Left', value: 'left' },
-					{ title: 'Center', value: 'center' },
-					{ title: 'Right', value: 'right' },
-				],
-			},
-		}),
-		defineField({
 			title: 'Content',
 			name: 'content',
 			type: 'normalText',
