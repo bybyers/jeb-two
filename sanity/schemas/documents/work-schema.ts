@@ -1,10 +1,17 @@
 import { defineType, defineField } from 'sanity'
+import {TargetIcon, BoltIcon} from '@sanity/icons'
+
 
 export default defineType({
   name: 'work',
   title: 'Work',
   type: 'document',
   fields: [
+    defineField({
+      name: 'thumbnail',
+      title: 'Thumbnail',
+      type: 'defaultImage',
+    }),
     defineField({
       name: 'title',
       title: 'Title',
@@ -36,12 +43,27 @@ export default defineType({
       of: [
         {
           type: 'object',
+          icon: TargetIcon,
           fields: [
             { name: 'title', title: 'Title', type: 'string' },
             { name: 'type', title: 'Type', type: 'string' },
           ],
+          preview: {
+            select: {
+              title: 'title',
+              type: 'type',
+            },
+            prepare(selection) {
+              const { title, type } = selection
+              return {
+                title: `${title}`,
+                subtitle: `${type}`,
+              }
+            },
+          },
         },
       ],
+      
     }),
     defineField({
       name: 'credits',
@@ -50,10 +72,24 @@ export default defineType({
       of: [
         {
           type: 'object',
+          icon: BoltIcon,
           fields: [
             { name: 'job', title: 'Job', type: 'string' },
             { name: 'name', title: 'Name', type: 'string' },
           ],
+          preview: {
+            select: {
+              title: 'title',
+              name: 'name',
+            },
+            prepare(selection) {
+              const { title, name } = selection
+              return {
+                title: `${title}`,
+                subtitle: `${name}`,
+              }
+            },
+          },
         },
       ],
     }),
@@ -61,16 +97,6 @@ export default defineType({
       name: 'logo',
       title: 'Logo',
       type: 'defaultImage',
-    }),
-    defineField({
-      name: 'thumbnail',
-      title: 'Thumbnail',
-      type: 'defaultImage',
-    }),
-    defineField({
-      name: 'defaultImage',
-      title: 'Background Image',
-      type: 'image',
     }),
     defineField({
       name: 'orientation',
@@ -85,6 +111,11 @@ export default defineType({
       },
     }),
     defineField({
+      name: 'defaultImage',
+      title: 'Background Image',
+      type: 'defaultImage',
+    }),
+    defineField({
 			name: 'sections',
 			type: 'sections',
 			title: 'Page sections',
@@ -96,4 +127,17 @@ export default defineType({
       type: 'seo',
     }),
   ],
+  preview: {
+    select: {
+      title: 'title',
+      image: 'thumbnail',
+    },
+    prepare(selection) {
+      const { title, image } = selection
+      return {
+        title: `${title}`,
+        media: image,
+      }
+    },
+  },
 })
