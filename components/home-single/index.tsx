@@ -12,14 +12,14 @@ export const fetchCache = 'force-no-store';
 
 
 
-export default function Page({ page }: { page: SanityDocument }) {
+export default function HomePage({ page }: { page: SanityDocument }) {
   const { pageNav, sections } = page
 
   return (
     <>
-      {/* <Header items={pageNav?.header} /> */}
+      <Header />
       <main className="flex min-h-screen flex-col items-center justify-between">
-        test
+
         {/* <Sections body={sections} /> */}
       </main>
       {/* <Footer items={pageNav?.footer} /> */}

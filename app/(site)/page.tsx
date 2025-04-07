@@ -8,7 +8,7 @@ import { HomeQuery } from '@/sanity/queries/documents/page-query'
 import { SiteQuery } from '@/sanity/queries/documents/site-query'
 
 // Components
-import Page from "@/components/page-single"
+import HomePage from "@/components/home-single"
 import { urlFor } from "@/components/sanity-image/url"
 import OrgJsonLd from "@/components/organization-jsonld"
 
@@ -55,8 +55,8 @@ export default async function Home() {
 
   return (
     <>
-			<OrgJsonLd />test
-			{/* <Page page={page} />  */}
+			<OrgJsonLd />
+			<HomePage page={page} /> 
 		</>
   );
 }
