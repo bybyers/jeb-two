@@ -4,22 +4,22 @@ import { imageQuery } from '../objects/image-query'
 export const PagesQuery = groq`*[_type == "page" && defined(slug.current)][]`
 
 
-export const PageQuery = groq`
-   *[_type == "page" && slug.current == $slug][0]
+export const HomeQuery = groq`
+  *[_type == "home"][0] {
     _id,
     _createdAt,
     _updatedAt,
     title,
     "slug": slug.current,
     content[] {
-      ... // Rich text or other fields in content
-    }
+      ...
+    },
     heroImage {
       ${imageQuery}
     },
     heroText[] {
-      ... // Rich text or other fields in content
-    }
+      ...
+    },
     clientList,
     servicesList,
     seo {
@@ -31,7 +31,40 @@ export const PageQuery = groq`
     sections[] {
       ...,
       _type == 'textBlock' => {
-        ...,
+        ...
+      }
+    }
+  }
+`
+
+export const AboutQuery = groq`
+  *[_type == "home"][0] {
+    _id,
+    _createdAt,
+    _updatedAt,
+    title,
+    "slug": slug.current,
+    content[] {
+      ...
+    },
+    heroImage {
+      ${imageQuery}
+    },
+    heroText[] {
+      ...
+    },
+    clientList,
+    servicesList,
+    seo {
+      ...,
+      shareGraphic {
+        ${imageQuery}
+      },
+    },
+    sections[] {
+      ...,
+      _type == 'textBlock' => {
+        ...
       }
     }
   }

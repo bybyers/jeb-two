@@ -4,7 +4,7 @@ import { client } from "@/sanity/lib/client"
 import { Metadata } from 'next'
 
 // Queries
-import { PageQuery } from '@/sanity/queries/documents/page-query'
+import { HomeQuery } from '@/sanity/queries/documents/page-query'
 import { SiteQuery } from '@/sanity/queries/documents/site-query'
 
 // Components
@@ -50,14 +50,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 export default async function Home() {
   const { data: page } = await sanityFetch({
-    query: PageQuery,
-    params: { slug: "home" },
+    query: HomeQuery,
   });
 
   return (
     <>
-			<OrgJsonLd />
-			<Page page={page} /> 
+			<OrgJsonLd />test
+			{/* <Page page={page} />  */}
 		</>
   );
 }
