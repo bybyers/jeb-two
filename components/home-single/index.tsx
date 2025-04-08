@@ -5,6 +5,7 @@ import { SanityDocument } from "next-sanity"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import Sections from "@/components/sections"
+import HomeSection from "@/components/home-section"
 
 
 // Stop Caching
@@ -19,7 +20,7 @@ export default function HomePage({ page }: { page: SanityDocument }) {
     <>
       <Header />
       <main className="flex min-h-screen flex-col items-center justify-between">
-
+    
         {/* <Sections body={sections} /> */}
       </main>
       {/* <Footer items={pageNav?.footer} /> */}

@@ -3,6 +3,9 @@ import { imageQuery } from '../objects/image-query'
 
 export const WorksQuery = groq`*[_type == "work" && defined(slug.current)][]`
 
+
+
+
 export const WorkQuery = groq`
   *[_type == "work" && slug.current == $slug][0]{
     _id,
