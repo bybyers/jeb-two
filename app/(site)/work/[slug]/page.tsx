@@ -14,6 +14,7 @@ import { WorkType } from "@/types/documents/work-type";
 import { urlFor } from '@/components/sanity-image/url'
 import { metadata as defaultMetadata  } from '@/app/(site)/layout'
 import WorkPage from "@/components/work-single";
+import ProjectJsonLd from "@/components/project-jsonld";
 
 export async function generateStaticParams() {
 	const pages = await client.fetch(WorkPathsQuery)
@@ -79,6 +80,7 @@ export default async function Work({ params }: { params: Props }){
 
   return (
     <>
+      <ProjectJsonLd project={page} />
       <WorkPage page={page} />
     </>
   );

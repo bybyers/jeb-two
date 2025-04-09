@@ -4,7 +4,6 @@ import Script from 'next/script'
 import { useEffect, useState } from 'react'
 import { client } from '@/sanity/lib/client'
 import { SiteQuery } from '@/sanity/queries/documents/site-query'
-import Logo from '@/public/logo.png'
 
 const OrgJsonLd = () => {
   const [jsonLdContent, setJsonLdContent] = useState('')

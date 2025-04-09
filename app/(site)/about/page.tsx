@@ -11,6 +11,7 @@ import { SiteQuery } from '@/sanity/queries/documents/site-query'
 import AboutPage from "@/components/about-single"
 import { urlFor } from "@/components/sanity-image/url"
 import { metadata as defaultMetadata } from '@/app/(site)/layout';
+import AboutPageJsonLd from "@/components/aboutpage-jsonld";
 
 export const generateMetadata = async (): Promise<Metadata> => {
   const global = await client.fetch(SiteQuery);
@@ -58,6 +59,7 @@ export default async function About() {
 
   return (
     <>
+      <AboutPageJsonLd />
 			<AboutPage page={page} />
 		</>
   );

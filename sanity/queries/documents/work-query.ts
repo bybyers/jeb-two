@@ -31,6 +31,19 @@ export const WorksQuery = groq`
   }
 `
 
+export const WorkJSONQuery = groq`
+    *[_type == "work"] {
+      _id,
+      _createdAt,
+      _updatedAt,
+      title,
+      "slug": slug.current,
+      "image": seo.shareGraphic {
+        ${imageQuery}
+      },
+      'description': seo.metaDesc,
+    }
+  `
 export const WorkQuery = groq`
   *[_type == "work" && slug.current == $slug][0]{
     _id,

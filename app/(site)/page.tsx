@@ -12,6 +12,8 @@ import { WorksQuery } from "@/sanity/queries/documents/work-query";
 import HomePage from "@/components/home-single"
 import { urlFor } from "@/components/sanity-image/url"
 import OrgJsonLd from "@/components/organization-jsonld"
+import ProjectListJsonLd from "@/components/projectlist-jsonld";
+import HomePageJsonLd from "@/components/homepage-jsonld";
 import { metadata as defaultMetadata } from '@/app/(site)/layout';
 
 export const generateMetadata = async (): Promise<Metadata> => {
@@ -63,6 +65,8 @@ export default async function Home() {
   return (
     <>
 			<OrgJsonLd />
+      <ProjectListJsonLd />
+      <HomePageJsonLd />
 			<HomePage page={page} work={works} /> 
 		</>
   );
