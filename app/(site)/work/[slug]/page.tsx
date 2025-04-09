@@ -53,10 +53,10 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 		generator: 'Next.js',
 		applicationName: 'Jacob Byers | Frontend Engineer',
 		publisher: 'Jacob Byers',
-		title: result.title,
+		title: `${result.title} | Jacob Byers`,
 		description: result.description,
 		openGraph: {
-			title: result.title,
+			title: `${result.title} | Jacob Byers`,
 			description: result.description,
 			images: [
 				{
