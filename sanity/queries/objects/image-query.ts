@@ -16,6 +16,8 @@ export const imageQuery = groq`
     url,
     metadata {
       dimensions {
+        width,
+        height,
         aspectRatio
       }
     }

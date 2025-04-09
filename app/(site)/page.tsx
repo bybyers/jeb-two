@@ -6,6 +6,7 @@ import { Metadata } from 'next'
 // Queries
 import { HomeQuery } from '@/sanity/queries/documents/page-query'
 import { SiteQuery } from '@/sanity/queries/documents/site-query'
+import { WorksQuery } from "@/sanity/queries/documents/work-query";
 
 // Components
 import HomePage from "@/components/home-single"
@@ -52,11 +53,14 @@ export default async function Home() {
   const { data: page } = await sanityFetch({
     query: HomeQuery,
   });
+  const { data: works } = await sanityFetch({
+    query: WorksQuery,
+  });
 
   return (
     <>
 			<OrgJsonLd />
-			<HomePage page={page} /> 
+			<HomePage page={page} work={works} /> 
 		</>
   );
 }

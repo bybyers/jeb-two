@@ -7,7 +7,7 @@ export type WorkType = {
   _updatedAt: Date
   title: string
   slug: string
-  thumbnail?: DefaultImageType
+  thumbnail: DefaultImageType
   url?: string
   releaseDate?: Date
   stack?: {
@@ -18,9 +18,9 @@ export type WorkType = {
     job: string
     name: string
   }[]
-  logo?: DefaultImageType
-  orientation?: 'badge' | 'button' | 'banner'
-  defaultImage?: DefaultImageType
+  logo: DefaultImageType
+  orientation: 'badge' | 'button' | 'banner'
+  defaultImage: DefaultImageType
   sections?: any // Replace `any` with the appropriate type if available
   seo: SeoType
 }
