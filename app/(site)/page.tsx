@@ -12,42 +12,42 @@ import { WorksQuery } from "@/sanity/queries/documents/work-query";
 import HomePage from "@/components/home-single"
 import { urlFor } from "@/components/sanity-image/url"
 import OrgJsonLd from "@/components/organization-jsonld"
+import { metadata as defaultMetadata } from '@/app/(site)/layout';
 
 export const generateMetadata = async (): Promise<Metadata> => {
-	const global = await client.fetch(SiteQuery)
-	const seoImage = global[0].seo?.shareGraphic.asset.url
-	const result = {
-		title: global[0].seo.metaTitle,
-		description: global[0].seo?.metaDesc,
-		keywords: global[0].seo?.metaKeys,
-		image: urlFor(seoImage).width(800).height(600).url(),
-	}
+  const global = await client.fetch(SiteQuery);
 
-	return {
-		generator: 'Next.js',
-		applicationName: 'Spotlight Service',
-		publisher: 'Spotlight Service',
-		robots: 'index, follow',
-		metadataBase: new URL(`${process.env.NEXT_PUBLIC_SITE_URL}`),
-		title: `Spotlight Service | ${result.title}`,
-		description: result.description,
-		openGraph: {
-			title: `Spotlight Service | ${result.title}`,
-			description: result.description,
-			images: [
-				{
-					url: result.image,
-					width: 1200,
-					height: 630,
-					alt: result.title,
-				},
-			],
-		},
-		alternates: {
-			canonical: '/',
-		},
-	}
-}
+  // Check if seo exists
+  if (global[0]?.seo) {
+    const seoImage = global[0].seo.shareGraphic.asset.url;
+    const result = {
+      title: global[0].seo.metaTitle || defaultMetadata.title,
+      description: global[0].seo.metaDesc || defaultMetadata.description,
+      image: urlFor(seoImage).width(800).height(600).url(),
+    };
+
+    return {
+      metadataBase: defaultMetadata.metadataBase,
+      title: result.title,
+      description: result.description,
+      openGraph: {
+        title: result.title,
+        description: result.description,
+        images: [
+          {
+            url: result.image,
+            width: 1200,
+            height: 630,
+            alt: result.title,
+          },
+        ],
+      },
+    };
+  }
+
+  // Fallback to default metadata if no SEO data exists
+  return defaultMetadata;
+};
 
 export default async function Home() {
   const { data: page } = await sanityFetch({
