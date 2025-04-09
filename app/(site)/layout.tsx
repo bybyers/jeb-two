@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Template from "./template"
+import Header from "@/components/header";
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.jacobbyers.me/'),
@@ -33,7 +36,20 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        {children}
+        <Template>
+          <Header />
+          {children}
+          <Script
+            defer
+            data-domain="jacobbyers.me"
+            src="https://plausible.io/js/script.hash.outbound-links.js"
+            strategy="afterInteractive"
+          />
+          {/* Plausible initialization script for custom events */}
+          <Script id="plausible-init" strategy="afterInteractive">
+            {`window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }`}
+          </Script>
+        </Template>
       </body>
     </html>
   );
