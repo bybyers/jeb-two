@@ -4,9 +4,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Marquee from 'react-smooth-marquee' 
+import { usePlausible } from 'next-plausible'
 
 const Header: React.FC = () => {
   const pathname = usePathname() 
+  const plausible = usePlausible()
 
   return (
     <header className="p-5 absolute z-50 w-full font-bold text-base md:text-4xl text-white">
@@ -38,6 +40,7 @@ const Header: React.FC = () => {
           <a
             href="mailto:byers.jacob@gmail.com"
             className="no-underline hover:text-gray-500 focus:text-gray-500"
+            onClick={() => plausible('Email Click')}
           >
             Contact
           </a>

@@ -1,9 +1,8 @@
 'use client'
 
 // Tools
-import { useState } from 'react'
 import Link from 'next/link'
-import { isMobile } from 'react-device-detect'
+import { usePlausible } from 'next-plausible'
 
 // Types
 import { WorkType } from '@/types/documents/work-type'
@@ -11,7 +10,6 @@ import { WorkType } from '@/types/documents/work-type'
 
 // Components
 import SanityImage from '../sanity-image'
-import SimpleText from '../simple-text'
 
 
 interface Props {
@@ -20,6 +18,7 @@ interface Props {
 
 
 export default function WorkSection({ page }: Props) {
+  const plausible = usePlausible()
 
   return (
     <section className="px-5 pt-[5rem] min-h-[calc(100vh-3.5rem)] flex flex-wrap w-full relative">
@@ -49,7 +48,10 @@ export default function WorkSection({ page }: Props) {
         <div className="absolute bottom-5 z-30 w-full flex justify-between px-5">
           <h1 className="text-xl md:text-[30px]">{page.title}</h1>
           {page.url && (
-            <Link href={page.url} className='hover:underline no-underline text-xl md:text-[30px]'>
+            <Link 
+              href={page.url} className='hover:underline no-underline text-xl md:text-[30px]'
+              onClick={() => plausible('Project Site Click', { props: { project: page.title } })}
+            >
               Visit Site
             </Link>
           )}
