@@ -2,6 +2,7 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { client } from "@/sanity/lib/client"
 import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 // Queries
 import { WorkQuery, WorkPathsQuery } from '@/sanity/queries/documents/work-query'
@@ -77,6 +78,9 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 export default async function Work({ params }: { params: Props }){
   const page = await client.fetch(WorkQuery, params);
 
+  if (!page) {
+		return notFound()
+	}
 
   return (
     <>
