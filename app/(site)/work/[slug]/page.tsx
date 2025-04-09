@@ -1,5 +1,6 @@
 // Tools
 import { sanityFetch } from "@/sanity/lib/live";
+import { QueryParams, SanityDocument } from "next-sanity"
 import { client } from "@/sanity/lib/client"
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -29,7 +30,10 @@ type Props = {
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
 	const { params } = props
-	const page = await client.fetch<WorkType>(WorkQuery, params)
+	const { data: page } = await sanityFetch({
+    query: WorkQuery,
+    params: await params,
+  });
 	const global = await client.fetch(SiteQuery)
 
 	const result = {
@@ -75,8 +79,11 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 	}
 }
 
-export default async function Work({ params }: { params: Props }){
-  const page = await client.fetch(WorkQuery, params);
+export default async function Work({ params }: { params: Promise<QueryParams> }) {
+  const { data: page } = await sanityFetch({
+    query: WorkQuery,
+    params: await params,
+  });
 
   if (!page) {
 		return notFound()
