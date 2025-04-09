@@ -48,7 +48,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
   return defaultMetadata;
 };
 
-export default async function Home() {
+export default async function About() {
   const { data: page } = await sanityFetch({
     query: AboutQuery,
   });
