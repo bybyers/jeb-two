@@ -7,4 +7,5 @@ export type SocialType = {
 	instagram?: string
 	youtube?: string
 	tiktok?: string
+  github?: string
 }

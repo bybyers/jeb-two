@@ -13,17 +13,11 @@ import { SocialType } from "@/types/components/social-type"
 import { SiteQuery } from "@/sanity/queries/documents/site-query"
 
 // Components
-import FooterNav from "../navigation/footer"
 
 
-interface FooterProps {
-  items: NavigationType
-}
 
 
-const Footer: React.FC<FooterProps> = ({
-  items
-}) => {
+const Footer: React.FC<any> = () => {
   const [socials, setSocials] = useState<SocialType | null>(null)
 
   useEffect(() => {
@@ -41,20 +35,27 @@ const Footer: React.FC<FooterProps> = ({
   const year = date.getFullYear()
 
   return (
-    <footer className='flex flex-col items-center py-10 gap-y-10'>
-      {items && (
-         <FooterNav data={items} />
-       )}
-      <div className='flex gap-y-10 text-white'>
-        {socials?.linkedin && (
-          <Link href={socials?.linkedin}>
-            <div className='bg-gradient-to-b from-[#616ab3] to-primary h-10 w-10 rounded-full flex justify-center items-center'>
-             Linkedin
-            </div>
-          </Link>
-        )}
-      </div>
-      <small>© {year} Spotlight Service. All rights reserved.</small>
+    <footer className='flex justify-start px-5 py-3'>
+      {socials?.linkedin && (
+        <Link
+          href={socials.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:text-gray-300 transition-colors duration-300"
+        >
+          LinkedIn
+        </Link>
+      )}
+      {socials?.github && (
+        <Link
+          href={socials.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="ml-4 hover:text-gray-300 transition-colors duration-300"
+        >
+          GitHub
+        </Link>
+      )}
     </footer>
   )
 }

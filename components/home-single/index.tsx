@@ -3,6 +3,7 @@
 // Types
 import { PageType } from "@/types/documents/page-type"
 import { WorkType } from "@/types/documents/work-type"
+import { SocialType } from "@/types/components/social-type"
 
 // Components
 import Header from "@/components/header"
@@ -20,17 +21,15 @@ interface HomePageProps {
 
 export default function HomePage({ page, work }: HomePageProps) {
 
+  console.log('page', page)
+
   return (
     <>
       <Header />
-      <main className="flex min-h-screen flex-col items-center justify-between">
-        {/* Render sections */}
-        {/* <Sections body={sections} /> */}
+      <main className="flex flex-col items-center justify-between">
         <HomeSection page={page} projects={work} />
-        {/* Render works */}
-  
       </main>
-      {/* <Footer items={pageNav?.footer} /> */}
+      <Footer />
     </>
   )
 }
