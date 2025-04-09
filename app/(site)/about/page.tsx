@@ -4,13 +4,12 @@ import { client } from "@/sanity/lib/client"
 import { Metadata } from 'next'
 
 // Queries
-import { HomeQuery } from '@/sanity/queries/documents/page-query'
+import { AboutQuery } from '@/sanity/queries/documents/page-query'
 import { SiteQuery } from '@/sanity/queries/documents/site-query'
 
 // Components
-import HomePage from "@/components/home-single"
+import AboutPage from "@/components/about-single"
 import { urlFor } from "@/components/sanity-image/url"
-import OrgJsonLd from "@/components/organization-jsonld"
 
 export const generateMetadata = async (): Promise<Metadata> => {
 	const global = await client.fetch(SiteQuery)
@@ -50,12 +49,12 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 export default async function Home() {
   const { data: page } = await sanityFetch({
-    query: HomeQuery,
+    query: AboutQuery,
   });
 
   return (
     <>
-			About Page
+			<AboutPage page={page} />
 		</>
   );
 }
