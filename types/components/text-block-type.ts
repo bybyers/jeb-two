@@ -1,10 +1,11 @@
-import { NormalTextType } from '../objects/normal-text-type'
+import { PortableTextBlock } from 'sanity';
 
 export type TextBlockType = {
-	_type: 'textBlock'
-	active: boolean
-	anchor: string
-	componentIndex: number
-	contentAlignment: 'left' | 'center' | 'right'
-	content: NormalTextType
-}
+  _key: string;
+  _type: string;
+  active: boolean;
+  componentIndex: number;
+  content: {
+    text: PortableTextBlock[];
+  }
+};
