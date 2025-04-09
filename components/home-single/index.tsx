@@ -5,7 +5,6 @@ import { PageType } from "@/types/documents/page-type"
 import { WorkType } from "@/types/documents/work-type"
 
 // Components
-import Header from "@/components/header"
 import Footer from "@/components/footer"
 import HomeSection from "@/components/home-section"
 

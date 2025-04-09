@@ -38,7 +38,7 @@ export const HomeQuery = groq`
 `
 
 export const AboutQuery = groq`
-  *[_type == "home"][0] {
+  *[_type == "about"][0] {
     _id,
     _createdAt,
     _updatedAt,
