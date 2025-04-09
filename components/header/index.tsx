@@ -12,7 +12,7 @@ const Header: React.FC = () => {
     <header className="p-5 absolute z-50 w-full font-bold text-base md:text-4xl text-white">
       <div className="flex border-b border-white">
         {/* Home Link */}
-        <Link href="/" aria-label="Navigate to the home page" className="mb-1 no-underline md:mb-0">
+        <Link href="/" aria-label="Navigate to the home page" className="mb-1 no-underline md:mb-0 hover:text-gray-500 focus:text-gray-500">
           Jacob Byers
         </Link>
 
@@ -29,10 +29,10 @@ const Header: React.FC = () => {
 
         {/* Navigation Links */}
         <nav className="flex ml-auto space-x-6 md:w-auto">
-          <Link href="/" className={`${pathname === '/' ? 'bigDot' : ''} no-underline`}>
+          <Link href="/" className={`${pathname === '/' ? 'bigDot' : ''} no-underline hover:text-gray-500 focus:text-gray-500`}>
             Work
           </Link>
-          <Link href="/about" className={`${pathname === '/about' ? 'bigDot' : ''} no-underline`}>
+          <Link href="/about" className={`${pathname === '/about' ? 'bigDot' : ''} no-underline hover:text-gray-500 focus:text-gray-500`}>
             About
           </Link>
           <a
