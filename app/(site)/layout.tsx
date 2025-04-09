@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 	keywords: ['Jacob Byers', 'Frontend Engineer', 'Portfolio', 'Web Development', 'React', 'Next.js'],
 	openGraph: {
 		title: 'Jacob Byers | Frontend Engineer',
-		description: `TPortfolio of Jacob Byers, a frontend engineer with a passion for building user-friendly web applications. Explore my projects and skills in React, Next.js, and more.`,
+		description: `Portfolio of Jacob Byers, a frontend engineer with a passion for building user-friendly web applications. Explore my projects and skills in React, Next.js, and more.`,
 		images: [
 			{
 				url: 'https://cdn.sanity.io/images/w9zn3gtf/production/d9b9e38a3a52dd3cc051b0cf37e5e7e212f87e13-1200x630.jpg',

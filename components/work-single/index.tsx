@@ -1,24 +1,24 @@
 'use client'
 
 // Types
-import { PageType } from "@/types/documents/page-type"
+import { WorkType } from "@/types/documents/work-type"
 
 // Components
 import Footer from "@/components/footer"
-import AboutSection from "@/components/about-section"
+import WorkSection from "@/components/work-section"
 
 // Stop Caching
 export const fetchCache = 'force-no-store'
 
-interface AboutPageProps {
-  page: PageType
+interface WorkPageProps {
+  page: WorkType
 }
 
-export default function AboutPage({ page }: AboutPageProps) {
+export default function WorkPage({ page }: WorkPageProps) {
   return (
     <>
       <main className="flex flex-col items-center justify-between">
-        <AboutSection page={page} />
+        <WorkSection page={page} />
       </main>
       <Footer />
     </>

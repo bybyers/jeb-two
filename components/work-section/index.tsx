@@ -1,0 +1,101 @@
+'use client'
+
+// Tools
+import { useState } from 'react'
+import Link from 'next/link'
+import { isMobile } from 'react-device-detect'
+
+// Types
+import { WorkType } from '@/types/documents/work-type'
+
+
+// Components
+import SanityImage from '../sanity-image'
+import SimpleText from '../simple-text'
+
+
+interface Props {
+  page: WorkType
+}
+
+
+export default function WorkSection({ page }: Props) {
+
+  return (
+    <section className="px-5 pt-[5rem] min-h-[calc(100vh-3.5rem)] flex flex-wrap w-full relative">
+      <div className='w-full md:w-3/5 bg-gray-900 rounded-lg overflow-hidden block group relative min-h-[calc(100vh-14rem)] md:min-h-[calc(100vh-8rem)]'>
+        <div className="absolute z-30 w-full h-full grid content-center justify-center">
+          {page.logo && (
+            <div
+              key={page._id}
+              className="animate-slide-in-top"
+            >
+              <SanityImage
+                source={page.logo}
+                alt={page.logo?.alt || ''}
+                width={page.logo?.asset.metadata.dimensions.width}
+                height={page.logo?.asset.metadata.dimensions.height}
+                componentIndex={0}
+                className={
+                  page.orientation === 'banner'
+                    ? 'w-[16rem] md:w-[30rem]'
+                    : 'w-[14rem] md:w-[25rem]'
+                }
+                sizes="100vw"
+              />
+            </div>
+          )}
+        </div>
+        <div className="absolute bottom-5 z-30 w-full flex justify-between px-5">
+          <h1 className="text-xl md:text-[30px]">{page.title}</h1>
+          {page.url && (
+            <Link href={page.url} className='hover:underline no-underline text-xl md:text-[30px]'>
+              Visit Site
+            </Link>
+          )}
+        </div>
+        <div className='w-full'>
+          {page.defaultImage && (
+            <SanityImage
+              source={page.defaultImage}
+              alt={page.defaultImage.alt}
+              width={884}
+              height={602}
+              componentIndex={0}
+              className='object-cover object-center opacity-20'
+              sizes='100vw'
+            />
+          )}
+        </div>
+      </div>
+      <div className='w-full md:w-2/5 grid md:pl-5 content-center'>
+        <h2 className='w-full border-b border-white text-white/75'>The Tech Stack</h2>
+        {page.stack?.map((item, i) => {
+          return (
+            <div className="p-2 border-b overflow-hidden border-white w-full mb-2 items-end" key={`tech-${i}`}>
+              <div
+                className="flex place-content-between w-full"
+              >
+                <span className="text-2xl md:text-4xl">{item.title}</span>
+                <span className="text-large md:text-2xl text-white/75">{item.type}</span>
+              </div>
+            </div>
+          )
+        })}
+        {page.credits && (<h2 className='w-full border-b border-white mt-8 text-white/75'>Special Thanks</h2>)}
+        {page.credits?.map((item, i) => {
+          return (
+            <div className="p-2 border-b overflow-hidden border-white w-full mb-2 items-end" key={`job-${i}`}>
+              <div
+                className="flex place-content-between w-full"
+              >
+                <span className="text-2xl md:text-4xl">{item.job}</span>
+                <span className="text-large md:text-2xl text-white/75">{item.name}</span>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </section>
+  )
+}

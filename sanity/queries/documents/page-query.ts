@@ -1,7 +1,15 @@
 import { groq } from 'next-sanity'
 import { imageQuery } from '../objects/image-query'
 
-export const PagesQuery = groq`*[_type == "page" && defined(slug.current)][]`
+export const HomeSiteMapQuery = groq`*[_type == "home"][0]{
+  "slug": slug.current,
+  _updatedAt
+}`
+
+export const AboutSiteMapQuery = groq`*[_type == "about"][0]{
+  "slug": slug.current,
+  _updatedAt
+}`
 
 
 export const HomeQuery = groq`

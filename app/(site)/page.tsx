@@ -28,6 +28,9 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
     return {
       metadataBase: defaultMetadata.metadataBase,
+      generator: 'Next.js',
+		  applicationName: 'Jacob Byers | Frontend Engineer',
+		  publisher: 'Jacob Byers',
       title: result.title,
       description: result.description,
       openGraph: {
