@@ -21,8 +21,6 @@ interface Props {
 
 export default function AboutSection({ page }: Props) {
 
-  console.log(page);
-
   return (
     <section className="px-5 pt-[5rem] min-h-[calc(100vh-3.5rem)] flex flex-wrap w-full relative">
       <div className='md:absolute md:bottom-5 w-full md:w-auto opacity-75 md:right-5'>
