@@ -65,9 +65,10 @@ export default function HomeSection({ projects, page }: Props) {
                 <SanityImage
                   source={projects[current].defaultImage}
                   alt={projects[current].defaultImage?.alt}
-                  width={884}
-                  height={602}
+                  width={1512}
+                  height={1073}
                   componentIndex={0}
+                  fill
                   className='object-cover object-center opacity-20'
                   sizes='100vw'
                 />

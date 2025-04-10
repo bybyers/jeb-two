@@ -17,7 +17,7 @@ interface WorkPageProps {
 
 export default function WorkPage({ page }: WorkPageProps) {
 
-  console.log(page)
+
   return (
     <>
       <main className="flex flex-col items-center justify-between">

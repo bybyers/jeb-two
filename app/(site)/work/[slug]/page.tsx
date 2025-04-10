@@ -2,7 +2,7 @@
 import { sanityFetch } from "@/sanity/lib/live";
 import { QueryParams, SanityDocument } from "next-sanity"
 import { client } from "@/sanity/lib/client"
-import { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 // Queries
@@ -25,11 +25,10 @@ export async function generateStaticParams() {
 }
 
 type Props = {
-	params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export const generateMetadata = async (props: Props): Promise<Metadata> => {
-	const { params } = props
+export async function generateMetadata({ params }: Props, parent: ResolvingMetadata): Promise<Metadata> {
 	const { data: page } = await sanityFetch({
     query: WorkQuery,
     params: await params,
@@ -79,7 +78,7 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 	}
 }
 
-export default async function Work({ params }: { params: Promise<QueryParams> }) {
+export default async function Work({ params }: { params: Promise<{ slug: string }> }) {
   const { data: page } = await sanityFetch({
     query: WorkQuery,
     params: await params,

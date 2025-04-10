@@ -8,7 +8,9 @@ export type PageType = {
 	_createdAt: Date
 	_updatedAt: Date
 	title: string
-	slug: string
+	slug: {
+    current: string
+  }
   heroImage?: DefaultImageType
   heroText?: SimpleTextType
   content?: SimpleTextType
