@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import ClientLayout from "./client-layout";
+import { SanityLive } from "@/sanity/lib/live"
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.jacobbyers.me/'),
@@ -32,7 +33,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="antialiased">
-        <ClientLayout>{children}</ClientLayout>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
+        <SanityLive />
       </body>
     </html>
   );
