@@ -1,6 +1,5 @@
 // Tools
 import { sanityFetch } from "@/sanity/lib/live";
-import { QueryParams, SanityDocument } from "next-sanity"
 import { client } from "@/sanity/lib/client"
 import type { Metadata, ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -8,9 +7,6 @@ import { notFound } from 'next/navigation'
 // Queries
 import { WorkQuery, WorkPathsQuery } from '@/sanity/queries/documents/work-query'
 import { SiteQuery } from '@/sanity/queries/documents/site-query'
-
-//Types
-import { WorkType } from "@/types/documents/work-type";
 
 // Components
 import { urlFor } from '@/components/sanity-image/url'
@@ -33,7 +29,7 @@ export async function generateMetadata({ params }: Props, parent: ResolvingMetad
     query: WorkQuery,
     params: await params,
   });
-	const global = await client.fetch(SiteQuery)
+	const { data: global } = await sanityFetch({ query: SiteQuery });
 
 	const result = {
 		noIndex: page.seo?.noIndex || false,

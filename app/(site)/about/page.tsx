@@ -1,6 +1,5 @@
 // Tools
 import { sanityFetch } from "@/sanity/lib/live";
-import { client } from "@/sanity/lib/client"
 import { Metadata } from 'next'
 
 // Queries
@@ -14,8 +13,8 @@ import { metadata as defaultMetadata } from '@/app/(site)/layout';
 import AboutPageJsonLd from "@/components/aboutpage-jsonld";
 
 export const generateMetadata = async (): Promise<Metadata> => {
-  const global = await client.fetch(SiteQuery);
-  const page = await client.fetch(AboutQuery);
+  const { data: global } = await sanityFetch({ query: SiteQuery });
+  const { data: page } = await sanityFetch({ query: AboutQuery });
 
   // Check if seo exists
   if (global[0]?.seo) {
