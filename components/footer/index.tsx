@@ -35,7 +35,7 @@ const Footer: React.FC<any> = () => {
   const year = date.getFullYear()
 
   return (
-    <footer className='flex justify-start px-5 py-3'>
+    <footer className='flex justify-start px-5 py-3 my-10 md:my-0'>
       {socials?.linkedin && (
         <Link
           href={socials.linkedin}
