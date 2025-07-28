@@ -25,7 +25,7 @@ export default function HomeSection({ projects, page }: Props) {
   const [greeting, setGreeting] = useState(true)
 
   return (
-    <section className="px-5 pt-20 min-h-[calc(100vh-3.5rem)] flex flex-wrap w-full gap-y-5">
+    <section className="px-5 pt-20 min-h-[calc(100vh-3.5rem)] flex flex-wrap w-full gap-y-10">
       {/* Left Panel */}
       <div className="md:w-3/5 w-full bg-gray-900 rounded-lg overflow-hidden min-h-[calc(100vh-26rem)] md:min-h-[calc(100vh-10rem)]">
         {greeting ? (

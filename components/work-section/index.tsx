@@ -21,7 +21,7 @@ export default function WorkSection({ page }: Props) {
   const plausible = usePlausible()
 
   return (
-    <section className="px-5 pt-[5rem] min-h-[calc(100vh-3.5rem)] flex flex-wrap w-full relative">
+    <section className="px-5 pt-[5rem] min-h-[calc(100vh-3.5rem)] flex flex-wrap w-full relative gap-y-10">
       <div className='w-full md:w-3/5 bg-gray-900 rounded-lg overflow-hidden block group relative min-h-[calc(100vh-14rem)] md:min-h-[calc(100vh-8rem)]'>
         <div className="absolute z-30 w-full h-full grid content-center justify-center">
           {page.logo && (
